@@ -1,0 +1,17 @@
+.navbar {
+    background: #C20C19;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+}
+
+.title {
+    color: white;
+}

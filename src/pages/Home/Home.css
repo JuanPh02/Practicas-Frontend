@@ -1,0 +1,9 @@
+.contenedor {
+    display: grid;
+    place-items: center;
+    height: 600px;
+}
+
+#logo {
+    width: 300px;
+}
