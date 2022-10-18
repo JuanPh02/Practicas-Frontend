@@ -1,6 +1,7 @@
 .contenedor {
     display: grid;
     place-items: center;
+    opacity: .5;
     height: 600px;
 }
 
