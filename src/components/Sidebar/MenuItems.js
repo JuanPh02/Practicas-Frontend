@@ -2,27 +2,27 @@
 const MenuItems = [
     
     {
-        title: "inicio",
+        title: "Inicio",
         path: "/",
         icon: "fas fa-house",
         cName: "nav-text", 
     },
     {
-        title: "Students",
+        title: "Estudiantes",
         path: "/students",
         icon: "fas fa-users",
         cName: "nav-text", 
     },
     {
-        title: "Empresas.",
+        title: "Empresas",
         path: "/companies",
         icon: "fas fa-building",
         cName: "nav-text", 
     },
     {
-        title: "Oferts",
+        title: "Ofertas",
         path: "/oferts",
-        icon: "fas fa-address-card",
+        icon: "fas fa-file-signature", 
         cName: "nav-text", 
     }
 ]
