@@ -3,25 +3,25 @@ const MenuItems = [
     
     {
         title: "Inicio",
-        path: "/Inicio",
+        path: "/",
         icon: "fas fa-house",
         cName: "nav-text", 
     },
     {
         title: "Estudiantes",
-        path: "/Students",
+        path: "/students",
         icon: "fas fa-users",
         cName: "nav-text", 
     },
     {
         title: "Empresas",
-        path: "/students",
+        path: "/companies",
         icon: "fas fa-building",
         cName: "nav-text", 
     },
     {
         title: "Ofertas",
-        path: "/ofertas",
+        path: "/oferts",
         icon: "fas fa-file-signature", 
         cName: "nav-text", 
     }
