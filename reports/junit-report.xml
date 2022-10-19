@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="ir-a-la-página-inicial-al-hacer-clic-en-el-logo-del-navbar;cualquier-otra-página-diferente-a-la-de-inicio" tests="2" failures="1" skipped="1">
+        <properties>
+            <property name="URI" value="D:/Pablo/Documents/UdeM/Semestre-8/Proyecto/Repositorios/practicas-frontend/features/clic-logo-to-home.feature">
+            </property>
+        </properties>
+        <testcase name="When Hago clic en el logo de la universidad" classname="ir-a-la-página-inicial-al-hacer-clic-en-el-logo-del-navbar;cualquier-otra-página-diferente-a-la-de-inicio" time="1.0806414">
+            <failure message="SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 86">SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 86
+Current browser version is 106.0.5249.119 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+  (Driver info: chromedriver=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}),platform=Windows NT 10.0.22621 x86_64)
+    at Object.checkLegacyResponse (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\error.js:529:15)
+    at parseHttpResponse (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\http.js:509:13)
+    at D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\http.js:441:30
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+From: Task: WebDriver.createSession()
+    at Function.createSession (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\webdriver.js:769:24)
+    at Function.createSession (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\chrome.js:761:15)
+    at createDriver (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\index.js:170:33)
+    at Builder.build (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\index.js:642:16)
+    at new module.exports (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\chromeDriver.js:20:8)
+    at getDriverInstance (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\world.js:54:22)
+    at D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\world.js:207:29</failure>
+        </testcase>
+        <testcase name="Then Debo ser redirigido a la pagina de Inicio" classname="ir-a-la-página-inicial-al-hacer-clic-en-el-logo-del-navbar;cualquier-otra-página-diferente-a-la-de-inicio">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="visualizacion-del-navbar-en-la-página-principal-de-la-aplicación;página-de-inicio-de-la-aplicación" tests="2" failures="1" skipped="1">
+        <properties>
+            <property name="URI" value="D:/Pablo/Documents/UdeM/Semestre-8/Proyecto/Repositorios/practicas-frontend/features/show-navbar.feature">
+            </property>
+        </properties>
+        <testcase name="When Abro la pagina de Inicio" classname="visualizacion-del-navbar-en-la-página-principal-de-la-aplicación;página-de-inicio-de-la-aplicación" time="0.6686005">
+            <failure message="SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 86">SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 86
+Current browser version is 106.0.5249.119 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+  (Driver info: chromedriver=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}),platform=Windows NT 10.0.22621 x86_64)
+    at Object.checkLegacyResponse (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\error.js:529:15)
+    at parseHttpResponse (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\http.js:509:13)
+    at D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\http.js:441:30
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+From: Task: WebDriver.createSession()
+    at Function.createSession (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\lib\webdriver.js:769:24)
+    at Function.createSession (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\chrome.js:761:15)
+    at createDriver (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\index.js:170:33)
+    at Builder.build (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-webdriver\index.js:642:16)
+    at new module.exports (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\chromeDriver.js:20:8)
+    at getDriverInstance (D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\world.js:54:22)
+    at D:\Pablo\Documents\UdeM\Semestre-8\Proyecto\Repositorios\practicas-frontend\node_modules\selenium-cucumber-js\runtime\world.js:207:29</failure>
+        </testcase>
+        <testcase name="Then Debo ver el navbar en la parte superior" classname="visualizacion-del-navbar-en-la-página-principal-de-la-aplicación;página-de-inicio-de-la-aplicación">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>
