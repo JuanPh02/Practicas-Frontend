@@ -47,7 +47,7 @@
 }
 
 .nav-text a {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(113, 13, 13);
     text-decoration: none;
     color: black;
     font-size: 18px;
@@ -60,7 +60,7 @@
 }
 
 .nav-text a:hover {
-    background-color: rgb(201, 201, 201);
+    background-color: rgb(45, 33, 155);
     transform: scale(1.1);
     color: black;
 }
