@@ -1,12 +1,12 @@
 import React from 'react';
 import "./Sidebar.css";
 import { MenuItems } from './MenuItems';
+import {Link} from "react-router-dom";
 
 export const Sidebar= ({sidebar,showSidebar}) => {
 
   return (
     <>
-    
       <nav className={sidebar ? "sidebar active" : "sidebar"}>
         <ul className='sidebar-items' onClick={showSidebar}>
           <li className='navbar-display'>
@@ -14,18 +14,18 @@ export const Sidebar= ({sidebar,showSidebar}) => {
           {MenuItems.map((item, index) => {
             return (
               <li key={index} className={item.cName}>
-                <a href='/'>
+                <Link to={item.path}>
                   <i className={item.icon}></i>
                   <span>{item.title}</span>
-                </a>
+                </Link>
               </li>
             )
           })}
               <li className="nav-text" >
-                <a href="/" >
+                <Link to="/" >
                   <i className="fas fa-arrow-right-from-bracket"></i>
                   <span>Salir</span>
-                </a>
+                </Link>
               </li>
         </ul>
       </nav>

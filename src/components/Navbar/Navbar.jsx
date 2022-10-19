@@ -5,7 +5,6 @@ import udemLogo from "../../assets/images/udem_logo2.png";
 import { Container } from 'reactstrap';
 import { Sidebar } from '../Sidebar/Sidebar';
 
-
 export default function Navbar() {
 
 const [sidebar, setSidebar] = useState(false);
