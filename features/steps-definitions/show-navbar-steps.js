@@ -11,7 +11,7 @@
 // };
 
 const { Given, When, Then } = require('@cucumber/cucumber')
-const { expect } = require('chai')
+const { expect, assert } = require('chai')
 const { By } = require('selenium-webdriver')
 
 Given("Usuario ingresa a la plataforma", async function () {
@@ -19,8 +19,11 @@ Given("Usuario ingresa a la plataforma", async function () {
 })
 When("Carga la pagina de Inicio", async function () {
     // const navbar = await this.chromeDriver.findElement(By.css('navbar'));
-    const navbar = await this.chromeDriver.findElement(By.cssSelector("div[class='navbar']"));
-    expect(navbar).to.be.eq('navbar');
+    const navbar = await this.chromeDriver.findElement(By.className("title"));
+    const t = navbar.getText()
+    console.log(t);
+    // expect(navbar.length).to.eq(o)
+    
     // await this.chromeDriver.findElement(By.name('nameInput')).sendKeys()
 })
 Then("Debo ver el navbar en la parte superior", async function () {
