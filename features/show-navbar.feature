@@ -5,4 +5,4 @@ Feature: Visualizacion del navbar
   Scenario: Visualizacion de navbar
     Given Usuario ingresa a la plataforma
     When Carga la pagina de Inicio 
-    Then Debo ver el navbar en la parte superior
+    Then Debe ver el navbar en la parte superior

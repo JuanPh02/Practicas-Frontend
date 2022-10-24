@@ -1,4 +1,4 @@
-const { setWorldConstructor } = require('@cucumber/cucumber')
+const { setWorldConstructor, setDefaultTimeout } = require('@cucumber/cucumber')
 const { Builder } = require('selenium-webdriver')
 
 class BddWorld {
@@ -21,3 +21,4 @@ class BddWorld {
 }
 
 setWorldConstructor(BddWorld)
+setDefaultTimeout(15000)

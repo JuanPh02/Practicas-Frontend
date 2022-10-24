@@ -22,7 +22,7 @@ export const Sidebar= ({sidebar,showSidebar}) => {
             )
           })}
               <li className="nav-text" >
-                <Link to="/" >
+                <Link to="/logout" onClick={() => alert("Cerró sesión correctamente")} >
                   <i className="fas fa-arrow-right-from-bracket"></i>
                   <span>Salir</span>
                 </Link>
