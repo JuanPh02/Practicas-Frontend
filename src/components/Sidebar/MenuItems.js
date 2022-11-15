@@ -21,7 +21,7 @@ const MenuItems = [
     },
     {
         title: "Ofertas",
-        path: "/oferts",
+        path: "/offers",
         icon: "fas fa-file-signature", 
         cName: "nav-text", 
     }

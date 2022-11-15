@@ -3,7 +3,7 @@ import "./Sidebar.css";
 import { MenuItems } from './MenuItems';
 import {Link} from "react-router-dom";
 
-export const Sidebar= ({sidebar,showSidebar}) => {
+export const Sidebar= ({sidebar, showSidebar, logout}) => {
 
   return (
     <>
@@ -22,7 +22,7 @@ export const Sidebar= ({sidebar,showSidebar}) => {
             )
           })}
               <li className="nav-text" >
-                <Link to="/logout" onClick={() => alert("Cerró sesión correctamente")} >
+                <Link to="/" onClick={logout} >
                   <i className="fas fa-arrow-right-from-bracket"></i>
                   <span>Salir</span>
                 </Link>
