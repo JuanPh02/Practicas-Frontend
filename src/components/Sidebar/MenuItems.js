@@ -8,6 +8,12 @@ const MenuItems = [
         cName: "nav-text", 
     },
     {
+        title: "Mi Perfil",
+        path: "/profile",
+        icon: "fas fa-user",
+        cName: "nav-text", 
+    },
+    {
         title: "Estudiantes",
         path: "/students",
         icon: "fas fa-users",

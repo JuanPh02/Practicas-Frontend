@@ -1,5 +1,7 @@
 import React, { Component, useState } from 'react'
-import axios, { Axios, AxiosError } from "axios";
+import axios from "axios";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import dataLocation from '../../../utils/dataLocation/dataLocation.json'
 
 //Reactstrap
 import {
@@ -13,256 +15,233 @@ import {
   Form,
   Row,
 } from "reactstrap";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-//Components
+const defaultFormData = {
+  nit: "",
+  company_name: "",
+  //logo_file: "",
+  sector: "",
+  employers_number: "",
+  webpage: "",
+  country: "",
+  department: "",
+  city: "",
+  //rut_file: "",
+  email: "",
+  //agreement_file: "",
+  // agreement: false,
+  password: "",
+  validatedPassword: ""
+}
 
+export const SignupCompanies = () => {
+  const [formData, setFormData] = useState([defaultFormData]);
+  const navigate = useNavigate();
 
-export default class SignupCompanies extends Component {
-  
-  state = {
-    nit: "",
-    company_name: "",
-    //logo_file: "",
-    sector: "",
-    employers_number: "",
-    webpage: "",
-    country: "",
-    department: "",
-    city: "",
-    //rut_file: "",
-    email: "",
-    //agreement_file: "",
-    agreement: false
-  }
-  
-
-  // componentDidMount() {
-  //   //Cargar Input tipo select con los nombres de las empresas registradas
-  //   axios
-  //     .get("http://localhost:8000/contasc")
-  //     .then(response => {
-  //       this.setState({ companies: response.data })
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  // }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.registerCompany();
-  }
-
-  onChange = (evt) => {
-    const value = evt.target.value;
-    this.setState({
-      ...this.state,
-      [evt.target.name]: value
-    });
-    // this.resetForm()
-  }
-
-  resetForm = () => {
-    // document.getElementById("form-company").reset();
-
-  }
-
-  registerCompany = async () => {
+  const registerCompany = async () => {
 
     const company = {
-      nit: this.state.nit,
-      company_name: this.state.company_name,
-      //logo_file: this.state.logo_file,
-      sector: this.state.sector,
-      employers_number: this.state.employers_number,
-      webpage: this.state.webpage,
-      country: this.state.country,
-      department: this.state.department,
-      city: this.state.city,
-      //rut_file: this.state.rut_file,
-      email: this.state.email,
-      //agreement_file: this.state.agreement_file
+      nit: formData.nit,
+      company_name: formData.company_name,
+      //logo_file: formData.logo_file,
+      sector: formData.sector,
+      employers_number: formData.employers_number,
+      webpage: formData.webpage,
+      country: formData.country,
+      department: formData.department,
+      city: formData.city,
+      //rut_file: formData.rut_file,
+      email: formData.email,
+      //agreement_file: formData.agreement_file
+      password: formData.password
     }
 
     const token = sessionStorage.getItem('token')
     try {
       const answer = await axios.post('companies/create', company)
       const message = answer.data.message
-      alert("La empresa se creó correctamente")
+
+      Swal.fire(
+        'Bien hecho!',
+        'La empresa se ha creado exitosamente!',
+        'success'
+      );
+      setFormData(defaultFormData);
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
   }
 
-  render(){
-    return (
-      <Container fluid="md">
-        <h2 className='mt-4'>Registro Nueva Empresa</h2>
-        <Form className="mt-4">
-          <FormGroup id='form-company' row className="mb-3">
-            <Col sm="3">
-              <Label for="nit">* Nit</Label>
-              <Input
-                id="nit"
-                name="nit"
-                placeholder="Ingresa el NIT"
-                type="number"
-                value={this.state.nit}
-                onChange={this.onChange}
-              />
-            </Col>
-            <Col sm="6">
-              <Label for="company_name">* Empresa</Label>
-              <Input
-                id="company_name"
-                name="company_name"
-                placeholder="Ingrese el nombre de empresa"
-                type="text"
-                value={this.state.company_name}
-                onChange={this.onChange}
-              />
-            </Col>
-            <Col sm="3">
-              <Label for="logo_file">Logo de la empresa (PNG)</Label>
-              <Input id="logo_file" name="logo_file" type="file" value={this.state.logo_file} onChange={this.onChange}/>
-            </Col>
-          </FormGroup>
-
-          <FormGroup row className="mb-3">
-            <Col sm="12">
-              <Label for="email">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                placeholder="correoejemplo@empresa.com"
-                type="email"
-                value={this.state.email}
-                onChange={this.onChange}
-              />
-            </Col>
-          </FormGroup>
-
-          <FormGroup row className="mb-3">
-            <Col sm="6">
-              <Label for="sector">Sector</Label>
-              <Input id="sector" name="sector" type="select" value={this.state.sector} onChange={this.onChange}>
-                <option key={0} value={0}>Seleccione un sector</option>
-                <option key={1} value="Sector 1">Sector 1</option>
-                <option key={2} value="Sector 2">Sector 2</option>
-                <option key={3} value="Sector 3">Sector 3</option>
-                
-              </Input>
-            </Col>
-            <Col sm="6">
-              <Label for="size_select">Numero de empleados</Label>
-              <Input id="employers_number" name="employers_number" type="select" value={this.state.employers_number} onChange={this.onChange}>
-                <option>Seleccione un rango</option>
-                <option key={0} value={0}>1 a 10</option>
-                <option key={1} value={1}>11 a 50</option>
-                <option key={2} value={2}>51 a 250</option>
-                <option key={3} value={3}>Más de 250</option>
-              </Input>
-            </Col>
-          </FormGroup>
-
-          <FormGroup row className="mb-3">
-            <Col sm="12">
-              <Label for="webpage">Página web</Label>
-              <Input
-                id="webpage"
-                name="webpage"
-                placeholder="https://www.pagina.com"
-                type="email"
-                value={this.state.webpage} 
-                onChange={this.onChange}
-              />
-            </Col>
-          </FormGroup>
-
-          <FormGroup row className="mb-3">
-            <Col sm="4">
-              <Label for="country_select">* País</Label>
-              <Input id="country" name="country" type="select" value={this.state.country} onChange={this.onChange}>
-                <option key={0} value={0}>Seleccione un país</option>
-                <option key={1} value="Argentina">Argentina</option>
-                <option key={2} value="Brazil">Brazil</option>
-                <option key={3} value="Colombia">Colombia</option>
-                <option key={4} value="Estados">Estados Unidos</option>
-                <option key={5} value="México">México</option>
-              </Input>
-            </Col>
-            <Col sm="4">
-              <Label for="department_select">* Departamento</Label>
-              <Input
-                id="department"
-                name="department"
-                type="select"
-                value={this.state.department} 
-                onChange={this.onChange}
-              >
-                <option key={0} value={0}>Seleccione un departamento</option>
-                <option key={1} value="Antioquia">Antioquia</option>
-                <option key={2} value="Cundinamarca">Cundinamarca</option>
-                <option key={3} value="Valle del Cauca">Valle del Cauca</option>
-              </Input>
-            </Col>
-            <Col sm="4">
-              <Label for="city_select">* Ciudad</Label>
-              <Input id="city" name="city" type="select" value={this.state.city} onChange={this.onChange}>
-                <option key={0} value={0}>Seleccione una ciudad</option>
-                <option key={1} value="Bogotá">Bogotá</option>
-                <option key={2} value="Cali">Cali</option>
-                <option key={3} value="Medellín">Medellín</option>
-              </Input>
-            </Col>
-          </FormGroup>
-
-          <FormGroup row className="mb-4">
-            <Col sm="12">
-              <Label for="rut_file">* RUT (No mayor a 3 meses)</Label>
-              <Input id="rut_file" name="rut_file" type="file" value={this.state.rut_file} onChange={this.onChange}/>
-            </Col>
-          </FormGroup>
-
-          <Row className="mb-4">
-            <Col sm="3">
-              <FormGroup row onChange={() =>{
-                this.setState({
-                  ...this.state,
-                  ["agreement"]: !this.state.agreement
-                });
-              }} >
-                <Label for="r1">¿Tiene convenio con la universidad?</Label>
-                <Col>
-                  <Input defaultChecked id="radio1" name="radio" type="radio"/>
-                  <Label className="px-2">No</Label>
-                </Col>
-                <Col>
-                  <Input id="radio2" name="radio" type="radio" />
-                  <Label className="px-2">Si</Label>
-                </Col>
-              </FormGroup>
-            </Col>
-            <Col sm="9">
-            {this.state.agreement && <div><Label for="agreement_file">* Convenio</Label>
-              <Input id="agreement_file" name="agreement_file" type="file"  value={this.state.agreement_file} onChange={this.onChange}/></div>}
-            </Col>
-          </Row>
-
-          <Row className="mb-2 justify-content-center">
-            <Col sm="8">
-              <Button
-                style={{ background: "#C20C19" }}
-                block
-                onClick={this.onSubmit}
-              >
-                Registrar
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </Container>
-    );
+  const onSubmit = (e) => {
+    e.preventDefault();
+    registerCompany();
   }
-}
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setFormData({
+      ...formData,
+      [e.target.name]: value
+    });
+  }
+
+  useEffect(() => {
+    console.log(formData);
+  })
+
+  return (
+    <Container fluid="md">
+      <h2 className='mt-4'>Registro Nueva Empresa</h2>
+      <Form className="mt-4">
+        <FormGroup id='form-company' row className="mb-3">
+          <Col sm="3">
+            <Label for="nit">* Nit</Label>
+            <Input
+              id="nit"
+              name="nit"
+              placeholder="Ingresa el NIT"
+              type="number"
+              value={formData.nit}
+              onChange={handleChange}
+            />
+          </Col>
+          <Col sm="6">
+            <Label for="company_name">* Empresa</Label>
+            <Input
+              id="company_name"
+              name="company_name"
+              placeholder="Ingrese el nombre de empresa"
+              type="text"
+              value={formData.company_name}
+              onChange={handleChange}
+            />
+          </Col>
+        </FormGroup>
+
+        <FormGroup row className="mb-3">
+          <Col sm="12">
+            <Label for="email">Email</Label>
+            <Input
+              id="email"
+              name="email"
+              placeholder="correoejemplo@empresa.com"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </Col>
+        </FormGroup>
+
+        <FormGroup row className="mb-3">
+          <Col sm="6">
+            <Label for="sector">Sector</Label>
+            <Input id="sector" name="sector" type="select" value={formData.sector} onChange={handleChange}>
+              <option key={0} value={0}>Seleccione un sector</option>
+              <option key={1} value="Administrativo">Administrativo</option>
+              <option key={2} value="Agropecuario">Agropecuario</option>
+              <option key={3} value="Agronomo">Agrónomo</option>
+              <option key={4} value="Comunicación">Comunicación</option>
+              <option key={5} value="Construcción">Construcción</option>
+              <option key={6} value="Contabilidad y economía">Contabilidad y economía</option>
+              <option key={7} value="Hotelero">Hotelero</option>
+              <option key={8} value="Industrial">Industrial</option>
+              <option key={9} value="Legislativo">Legislativo</option>
+              <option key={10} value="Marketing">Marketing</option>
+              <option key={11} value="Moda y textil">Moda y textil</option>
+              <option key={12} value="Tecnología y desarrollo">Tecnología y desarrollo</option>
+              <option key={13} value="Turismo">Turismo</option>
+            </Input>
+          </Col>
+          <Col sm="6">
+            <Label for="size_select">Numero de empleados</Label>
+            <Input id="employers_number" name="employers_number" type="select" value={formData.employers_number} onChange={handleChange}>
+              <option>Seleccione un rango</option>
+              <option key={0} value={0}>1 a 10</option>
+              <option key={1} value={1}>11 a 50</option>
+              <option key={2} value={2}>51 a 250</option>
+              <option key={3} value={3}>Más de 250</option>
+            </Input>
+          </Col>
+        </FormGroup>
+
+        <FormGroup row className="mb-3">
+          <Col sm="12">
+            <Label for="webpage">Página web</Label>
+            <Input
+              id="webpage"
+              name="webpage"
+              placeholder="https://www.pagina.com"
+              type="email"
+              value={formData.webpage}
+              onChange={handleChange}
+            />
+          </Col>
+        </FormGroup>
+
+        <FormGroup row className="mb-3">
+          <Col sm="4">
+            <Label for="country_select">* País</Label>
+            <Input id="country" name="country" type="select" value={formData.country} onChange={handleChange}>
+              <option key={0} value="">Seleccione un país</option>
+              <option key={1} value="Colombia">Colombia</option>
+            </Input>
+          </Col>
+          <Col sm="4">
+            <Label for="department_select">* Departamento</Label>
+            <Input
+              id="department"
+              name="department"
+              type="select"
+              value={formData.department}
+              onChange={handleChange}
+            >
+              <option key={0} value="">Seleccione un departamento</option>
+              {dataLocation.map(item => {
+                return <option key={item.id + 1} value={item.departamento}>{item.departamento}</option>
+              })}
+            </Input>
+          </Col>
+          <Col sm="4">
+            <Label for="city_select">* Ciudad</Label>
+            <Input id="city" name="city" type="select" value={formData.city} onChange={handleChange}>
+              <option key={0} value="">Seleccione una ciudad</option>
+              {formData.department ?
+                dataLocation.find(d => d.departamento === formData.department)
+                  .ciudades.map( (ciudad, idx) => {
+                    return <option key={idx} value={ciudad}>{ciudad}</option>
+                  })
+                : null
+              }
+            </Input>
+          </Col>
+        </FormGroup>
+
+        <FormGroup row className="mb-4">
+          <Col sm="4">
+            <Label for="password">* Contraseña</Label>
+            <Input id="password" name="password" type="password" value={formData.password} onChange={handleChange} />
+          </Col>
+          <Col sm="4">
+            <Label for="validatedPassword">* Confirmar Contraseña</Label>
+            <Input id="validatedPassword" name="validatedPassword" type="password" value={formData.validatedPassword} onChange={handleChange} />
+          </Col>
+        </FormGroup>
+
+        <Row className="mb-2 justify-content-center">
+          <Col sm="8">
+            <Button
+              style={{ background: "#C20C19" }}
+              block
+              onClick={onSubmit}
+            >
+              Registrar
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </Container>
+  )
+}

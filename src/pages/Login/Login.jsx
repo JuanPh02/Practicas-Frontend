@@ -32,11 +32,13 @@ const Login = () => {
       const document = answer.data.document
       const name = answer.data.name
       const token = answer.data.token
+      const rol = answer.data.rol
 
       sessionStorage.setItem('document',document)
       sessionStorage.setItem('name',name)
       sessionStorage.setItem('token',token)
-      setUser({...user, ["name"]: name, ["loggedIn"]: true})
+      sessionStorage.setItem('rol',rol)
+      setUser({...user, ["name"]: name, ["loggedIn"]: true, ["rol"]: rol})
       alert("Logueo Exitoso")
       navigate('/')
     }
@@ -98,9 +100,9 @@ const Login = () => {
         </Button>
       </Form>
       <div className="text-center pt-3">
-        <Link className="link-style" to="/signup-companies" >¿Nueva empresa o contacto? Regístrate</Link>
+        <Link className="link-style" to="/signup-companies" >¿Nueva empresa? Regístrese</Link>
         <span className="p-2">|</span>
-        <Link className="link-style" to="/forgot-password">Olvidé la contraseña</Link>
+        <Link className="link-style" to="/forgot-password">Olvidó la contraseña</Link>
       </div>
     </div>
   );
